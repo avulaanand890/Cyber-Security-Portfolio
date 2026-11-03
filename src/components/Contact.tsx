@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Send, Mail, Phone, AlertCircle, CheckCircle } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import emailjs from '@emailjs/browser';
+
+// Messages from the form are delivered to this address (same one shown below).
+const CONTACT_EMAIL = 'avulaanand890@gmail.com';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -40,21 +42,23 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
-        to_email: 'avulaanand890@gmail.com'
-      };
-
-      emailjs.init("KkamQjWVxdO8019TQ");
-
-      await emailjs.send(
-        "service_r3i121x",
-        "template_hzj799m",
-        templateParams
-      );
+      const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email, // used as the reply-to address
+          phone: formData.phone || 'Not provided',
+          message: formData.message,
+          _subject: `Portfolio contact from ${formData.name}`,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || (result.success !== true && result.success !== 'true')) {
+        throw new Error(result.message || `Request failed (${response.status})`);
+      }
 
       setFormStatus({
         message: 'Thank you! Your message has been sent successfully.',
@@ -68,9 +72,9 @@ const Contact: React.FC = () => {
         message: ''
       });
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error('Contact form error:', error);
       setFormStatus({
-        message: 'There was an error sending your message. Please try again.',
+        message: `Sorry, your message could not be sent. Please try again or email ${CONTACT_EMAIL} directly.`,
         type: 'error'
       });
     } finally {
