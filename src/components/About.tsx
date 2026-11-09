@@ -1,5 +1,6 @@
 import React from 'react';
-import { Shield, Server, GitBranch, Settings, Award, Zap } from 'lucide-react';
+import SectionHeading from './SectionHeading';
+import { Shield, GitBranch, Settings, Award } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const About: React.FC = () => {
@@ -13,7 +14,6 @@ const About: React.FC = () => {
     { name: 'Confluence', icon: GitBranch, color: 'from-blue-500 to-indigo-500', certified: false },
     { name: 'Jira', icon: Settings, color: 'from-blue-600 to-blue-800', certified: false },
     { name: 'GitHub', icon: GitBranch, color: 'from-gray-600 to-gray-800', certified: false },
-    { name: 'Axios', icon: Zap, color: 'from-purple-500 to-pink-500', certified: false },
   ];
 
   return (
@@ -26,12 +26,7 @@ const About: React.FC = () => {
               titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-600 animate-gradient-shift">
-                Hi, I'm Anand. Let's build something extraordinary.
-              </span>
-            </h2>
-            <div className="w-20 h-1 bg-green-500 mx-auto mb-8 animate-scale-in"></div>
+            <SectionHeading label="about" subtitle="Hi, I'm Anand. Let's build secure identity systems." />
           </div>
 
           <div 
@@ -41,9 +36,9 @@ const About: React.FC = () => {
             }`}
           >
             <p className="text-gray-300 text-lg leading-relaxed mb-8 text-center max-w-4xl mx-auto">
-              I specialize in <span className="text-green-400 font-semibold">Identity & Access Management</span> and 
-              full-stack development – crafting secure, scalable solutions that protect digital assets while delivering 
-              exceptional user experiences. With expertise in enterprise IAM systems and modern web technologies, 
+              I specialize in <span className="text-green-400 font-semibold">Identity & Access Management</span> – 
+              crafting secure, scalable solutions on the ForgeRock / Ping Identity platform that protect digital assets while 
+              delivering exceptional user experiences. With expertise in enterprise IAM systems, 
               I bridge the gap between security and usability.
             </p>
 
@@ -59,27 +54,17 @@ const About: React.FC = () => {
                   <h3 className="text-xl font-semibold text-white">IAM & Security</h3>
                 </div>
                 <p className="text-gray-400">
-                  ForgeRock IAM, PING Identity, OAuth 2.0, SAML, JWT, Multi-factor Authentication
-                </p>
-              </div>
-
-              <div className="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-green-500/50 transition-all duration-300 shadow-lg hover:shadow-green-500/10 hover-lift animate-fade-in-right stagger-2">
-                <div className="flex items-center mb-4">
-                  <Server className="text-green-500 mr-3 animate-rotate-in" size={24} />
-                  <h3 className="text-xl font-semibold text-white">Full Stack</h3>
-                </div>
-                <p className="text-gray-400">
-                  React, Node.js, TypeScript, Express, MongoDB, RESTful APIs
+                  PingAM (ForgeRock AM), PingIDM, PingDS, PingGateway, OAuth 2.0, SAML 2.0, Multi-factor Authentication
                 </p>
               </div>
 
               <div className="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:border-green-500/50 transition-all duration-300 shadow-lg hover:shadow-green-500/10 hover-lift animate-fade-in-left stagger-3">
                 <div className="flex items-center mb-4">
                   <GitBranch className="text-green-500 mr-3 animate-rotate-in" size={24} />
-                  <h3 className="text-xl font-semibold text-white">DevOps & Tools</h3>
+                  <h3 className="text-xl font-semibold text-white">ForgeOps & Automation</h3>
                 </div>
                 <p className="text-gray-400">
-                  GitHub, Jenkins, Kubernetes, CI/CD, Docker, Automation Scripts
+                  ForgeOps, GitHub, Jenkins, Kubernetes, Docker, Automation Scripts
                 </p>
               </div>
 
@@ -107,7 +92,7 @@ const About: React.FC = () => {
                 </span>
               </h3>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {tools.map((tool, index) => {
                   const Icon = tool.icon;
                   return (

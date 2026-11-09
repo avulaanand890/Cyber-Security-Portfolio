@@ -1,51 +1,34 @@
 /** @type {import('tailwindcss').Config} */
 
-// Cyber-security palette. Existing utility classes (green-*, blue-*, purple-*,
-// gray-* ...) are remapped here so the whole site re-themes from one place.
-const neonTeal = {
-  50: '#ecfffb',
-  100: '#c9fff4',
-  200: '#8dfbe8',
-  300: '#52f7dc',
-  400: '#19f5d0',
-  500: '#10d9b6',
-  600: '#0cb398',
-  700: '#0a8c78',
-  800: '#0a6b5f',
-  900: '#073f39',
+// Neon-green-on-black cyber-security theme.
+// Every colour family used across the site is remapped here, so the whole
+// site re-themes from this one file (plus the CSS variables in src/index.css).
+const neon = {
+  50: '#eaffe6',
+  100: '#d6ffd6', // off-white body text
+  200: '#a9ff98',
+  300: '#74ff5c',
+  400: '#39ff14', // accent
+  500: '#2bd60f',
+  600: '#1faa0e', // dimmed green: borders / secondary text
+  700: '#168009',
+  800: '#0d5a06',
+  900: '#073a04',
 };
 
-const cyan = {
-  300: '#7ee6f7',
-  400: '#38d5f0',
-  500: '#0fb8d9',
-  600: '#0a93b3',
-  700: '#0a7590',
-  900: '#073447',
-};
-
-const electric = {
-  200: '#c4d8ff',
-  300: '#9bbcff',
-  400: '#6a9bff',
-  500: '#4a7df0',
-  600: '#3a62cc',
-  700: '#2d4ba3',
-  900: '#16224d',
-};
-
-const navy = {
-  50: '#f1f6fc',
-  100: '#e1ebf7',
-  200: '#d6e4f5',
-  300: '#b5c5dc',
-  400: '#8aa0c0',
-  500: '#5b7094',
-  600: '#2a3f66',
-  700: '#1b2c4d',
-  800: '#0f1b30',
-  900: '#0a1220',
-  950: '#060d1a',
+// Near-black panels with a green tint (used for the old "gray-*" classes).
+const panel = {
+  50: '#eaffe6',
+  100: '#d6ffd6',
+  200: '#b9f2b2',
+  300: '#9fdc98', // readable secondary text
+  400: '#7fbf79',
+  500: '#5a9a55',
+  600: '#2f6a2b',
+  700: '#14401a',
+  800: '#0b1a0b',
+  900: '#060a06', // card panel
+  950: '#020402',
 };
 
 export default {
@@ -53,24 +36,32 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"JetBrains Mono"', 'ui-monospace', 'Cascadia Code', 'Consolas', 'monospace'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'Cascadia Code', 'Consolas', 'monospace'],
+        sans: ['"JetBrains Mono"', '"Fira Code"', 'ui-monospace', 'monospace'],
+        mono: ['"JetBrains Mono"', '"Fira Code"', 'ui-monospace', 'monospace'],
       },
       colors: {
-        black: '#050a14',
-        green: neonTeal,
-        emerald: neonTeal,
-        teal: neonTeal,
-        blue: cyan,
-        sky: cyan,
-        purple: electric,
-        violet: electric,
-        indigo: electric,
-        pink: cyan,
-        fuchsia: electric,
-        gray: navy,
-        slate: navy,
-        zinc: navy,
+        black: '#000000',
+        green: neon,
+        emerald: neon,
+        teal: neon,
+        lime: neon,
+        blue: neon,
+        sky: neon,
+        cyan: neon,
+        purple: neon,
+        violet: neon,
+        indigo: neon,
+        pink: neon,
+        fuchsia: neon,
+        red: neon,
+        orange: neon,
+        yellow: neon,
+        amber: neon,
+        rose: neon,
+        gray: panel,
+        slate: panel,
+        zinc: panel,
+        neutral: panel,
       },
     },
   },

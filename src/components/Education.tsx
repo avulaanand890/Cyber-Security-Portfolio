@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SectionHeading from './SectionHeading';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const Education: React.FC = () => {
@@ -8,10 +9,7 @@ const Education: React.FC = () => {
     <section className="py-16 bg-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Education</h2>
-            <div className="w-20 h-1 bg-green-500 mx-auto"></div>
-          </div>
+          <SectionHeading label="education" />
 
           <div className="bg-gray-800 rounded-lg overflow-hidden shadow-xl border border-gray-700">
             <button
