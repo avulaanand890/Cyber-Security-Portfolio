@@ -8,7 +8,7 @@ const CLIENT_ID = 'portfolio-spa';
 // (including the trailing slash if it has one), e.g. 'https://my-site.netlify.app/'.
 // Can also be supplied via VITE_REDIRECT_URI at build time.
 const REDIRECT_URI: string =
-  import.meta.env.VITE_REDIRECT_URI ?? 'https://REPLACE-ME.netlify.app/';
+  import.meta.env.VITE_REDIRECT_URI ?? 'https://anand-websiteco.netlify.app/';
 
 const VERIFIER_KEY = 'pkce_code_verifier';
 const STATE_KEY = 'oauth_state';
