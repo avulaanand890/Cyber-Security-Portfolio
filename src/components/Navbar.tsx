@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { startLogin } from '../auth/oauth';
 
 const navLinks = [
   { name: 'home', href: '#home' },
@@ -55,6 +56,10 @@ const Navbar: React.FC = () => {
           ))}
         </ul>
 
+        <button className="hidden lg:inline-block btn-term" onClick={() => void startLogin()}>
+          Login
+        </button>
+
         <button
           className="lg:hidden btn-term !p-2"
           onClick={() => setIsOpen(!isOpen)}
@@ -79,6 +84,11 @@ const Navbar: React.FC = () => {
               </a>
             </li>
           ))}
+          <li>
+            <button className="btn-term" onClick={() => void startLogin()}>
+              Login
+            </button>
+          </li>
         </ul>
       )}
     </header>
